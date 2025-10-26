@@ -1,4 +1,4 @@
-FTP-Lite
+**FTP-Lite**
 
 FTP-Lite is a lightweight, cross-platform file transfer application designed for secure file uploads and downloads with server-side metadata management and optional compression support. It is implemented in C++ using Qt for GUI and SQLite for metadata storage.
 
@@ -156,14 +156,14 @@ Compression: Optional gzip reduces bandwidth usage for large files.
 
 Admin control: Admin can track sensitive files and downloads.
 
-Security
+**Security**
 
-Usernames are tracked for uploads/downloads.
+    1.Usernames are tracked for uploads/downloads.
+    
+    2.Admin can monitor access to sensitive files.
+    
+    3.Future improvements may include authentication tokens and encrypted transfers.
 
-Admin can monitor access to sensitive files.
-
-Future improvements may include authentication tokens and encrypted transfers.
-
-License
+**License**
 
 MIT License © 2025
