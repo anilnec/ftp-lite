@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS files (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    filename TEXT UNIQUE,
+    filesize INTEGER,
+    upload_timestamp TEXT,
+    uploader TEXT,
+    download_count INTEGER DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS downloads (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    file_id INTEGER,
+    downloader TEXT,
+    timestamp TEXT,
+    FOREIGN KEY (file_id) REFERENCES files (id)
+);
