@@ -39,10 +39,10 @@ FTP-Lite is a lightweight, cross-platform file transfer application designed for
 
 The system follows a **Client-Server architecture:**
 
-ClientWindow (GUI) --> ClientApp --> FileTransferEngine --> CompressionHelper
-ClientApp <----TCP----> ServerApp <--> FileTransferEngine <--> CompressionHelper
-ServerApp --> MetadataManager --> SQLite Database
-ServerWindow (Admin GUI) --> ServerApp
+       ClientWindow (GUI) --> ClientApp --> FileTransferEngine --> CompressionHelper
+       ClientApp <----TCP----> ServerApp <--> FileTransferEngine <--> CompressionHelper
+       ServerApp --> MetadataManager --> SQLite Database
+       ServerWindow (Admin GUI) --> ServerApp
 
 
 **ClientApp**: Core client logic handling server communication.
@@ -86,65 +86,65 @@ ServerWindow (Admin GUI) --> ServerApp
 
 Build the project
 
-Windows: Open generated .sln in Visual Studio and build.
-
-Linux:
-
-make
-
-
-Run the applications
-
-Start the server first:
-
-./ftp_lite_server
-
-
-Launch client:
-
-./ftp_lite_client
+       Windows: Open generated .sln in Visual Studio and build.
+       
+       Linux:
+       
+       make
+       
+       
+       Run the applications
+       
+       Start the server first:
+       
+       ./ftp_lite_server
+       
+       
+       Launch client:
+       
+       ./ftp_lite_client
 
 **Database Schema**
-Files Table
-CREATE TABLE IF NOT EXISTS files (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    filename TEXT,
-    size INTEGER,
-    uploader TEXT,
-    upload_timestamp TEXT,
-    download_count INTEGER DEFAULT 0
-);
-
-Downloads Table
-CREATE TABLE IF NOT EXISTS downloads (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    file_id INTEGER,
-    downloader TEXT,
-    timestamp TEXT DEFAULT (datetime('now')),
-    FOREIGN KEY (file_id) REFERENCES files(id)
-);
+       Files Table
+       CREATE TABLE IF NOT EXISTS files (
+           id INTEGER PRIMARY KEY AUTOINCREMENT,
+           filename TEXT,
+           size INTEGER,
+           uploader TEXT,
+           upload_timestamp TEXT,
+           download_count INTEGER DEFAULT 0
+       );
+       
+       Downloads Table
+       CREATE TABLE IF NOT EXISTS downloads (
+           id INTEGER PRIMARY KEY AUTOINCREMENT,
+           file_id INTEGER,
+           downloader TEXT,
+           timestamp TEXT DEFAULT (datetime('now')),
+           FOREIGN KEY (file_id) REFERENCES files(id)
+       );
 
 **Usage**
 
 Client
-
-Enter username in GUI.
-
-Select file to upload or download.
-
-Check “Compress” option for upload/download to save bandwidth.
-
-Monitor progress in the GUI.
+       
+       Enter username in GUI.
+       
+       Select file to upload or download.
+       
+       Check “Compress” option for upload/download to save bandwidth.
+       
+       Monitor progress in the GUI.
 
 Server
 
-Start the server using ServerWindow GUI.
-
-View uploaded files and their metadata.
-
-Click on a file to see metadata and download history.
-
-Refresh file list or view download history as required.
+       Start the server using ServerWindow GUI.
+       
+       View uploaded files and their metadata.
+       
+       Click on a file to see metadata and download history.
+       
+       Refresh file list or view download history as required.
 
 **Design Considerations**
         Threaded server: Each client connection runs on a separate thread to handle concurrent uploads/downloads.
